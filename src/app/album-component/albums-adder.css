@@ -1,0 +1,78 @@
+.adder, .areYouSureAboutThat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 99vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.adder form, .areYouSureAboutThat form {
+  padding: 20px;
+  width: 600px;
+  background-color: white;
+}
+.adder form span, .areYouSureAboutThat form span {
+  color: red;
+}
+.adder form button:disabled, .areYouSureAboutThat form button:disabled {
+  color: #666666;
+}
+.adder input, .areYouSureAboutThat input {
+  width: 95%;
+  padding: 10px;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #c2c2c2;
+  outline: none;
+}
+.adder input:focus, .areYouSureAboutThat input:focus {
+  background-color: #f5f5f5;
+}
+
+.divWithList {
+  margin-top: 5px;
+  padding: 10px 0;
+  outline: none;
+  border-bottom: 1px solid #666666;
+}
+
+.listSpans {
+  color: black !important;
+  background: #c2c2c2 !important;
+  padding: 10px 20px !important;
+  border-radius: 25px !important;
+  margin-right: 5px !important;
+}
+.listSpans button {
+  display: inline;
+}
+.listSpans button:hover {
+  background-color: #666666 !important;
+  border-radius: 50%;
+}
+
+.adder-buttons, .areYouSure-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.adder-buttons button, .areYouSure-buttons button {
+  margin: 10px;
+  padding: 10px;
+  width: 60px;
+}
+
+.areYouSureAboutThat .ays-body {
+  padding: 20px;
+  background-color: white;
+}
+
+.adder-active, .areYouSure-active {
+  display: none;
+}
+
+/*# sourceMappingURL=albums-adder.css.map */

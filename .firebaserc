@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-task5": {
+      "hosting": {
+        "task5": [
+          "angular-task5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-task5"
+  }
+}

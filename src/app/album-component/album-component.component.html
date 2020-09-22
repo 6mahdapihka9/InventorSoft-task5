@@ -1,0 +1,68 @@
+<div class="main">
+  <div class="header-adder">
+    <h2>Albums</h2>
+    <button (click)="this.isUpdating = false; activateAdder()"><svg-icon src="../../assets/add-24px.svg" [svgStyle]="{ 'fill':'blue' }"></svg-icon>Add</button>
+  </div>
+  <div class="adder" [class.adder-active]="isAdderActive">
+    <form [formGroup]="albumForm" (ngSubmit)="onSubmit()">
+      <h2 >{{addOrEditText}}</h2>
+      <input name="name" placeholder="Name" formControlName="name">
+      <span class="error" *ngIf="name.touched && name.invalid && name.errors.required">Name required!</span>
+
+      <input name="band" placeholder="Band" formControlName="band">
+      <span class="error" *ngIf="band.touched && band.invalid && band.errors.required">Band required!</span>
+
+      <input name="genre" placeholder="Genre" formControlName="genre">
+      <span class="error" *ngIf="genre.touched && genre.invalid && genre.errors.required">Genre required!</span>
+
+      <input name="label" placeholder="Label" formControlName="label">
+      <span class="error" *ngIf="label.touched && label.invalid && label.errors.required">Label required!</span>
+
+      <input name="producer" placeholder="Producer" formControlName="producer">
+      <span class="error" *ngIf="producer.touched && producer.invalid && producer.errors.required">Producer required!</span>
+
+<!--      <div class="divWithList" contenteditable="true" #genreListDiv (keypress)="changeList(genreListDiv)">-->
+<!--        <span contenteditable="false" class="listSpans">text 1<button type="button" (click)="deleteSpan()">x</button></span>-->
+<!--        <span contenteditable="false" class="listSpans">text 2</span>-->
+<!--        <span contenteditable="false" class="listSpans">text 3</span>-->
+<!--        <span contenteditable="false" class="listSpans">text 4</span>-->
+<!--      </div>-->
+
+      <div class="adder-buttons">
+        <button type="button" (click)="closeFormAl()">Close</button>
+        <button type="submit" [disabled]="!albumForm.valid">Ok</button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <ul>
+      <li class="li-header">
+        <span class="li-name">Name</span>
+        <span class="li-band">Band</span>
+        <span class="li-genre">Genre</span>
+        <span class="li-label">Label</span>
+        <span class="li-producer">Producer</span>
+        <!--        <span class="li-releaseDate">ReleaseDate</span>-->
+      </li>
+      <li *ngFor="let album of allAlbums">
+        <span class="li-name">{{album.payload.doc.data().name}}</span>
+        <span class="li-band">{{album.payload.doc.data().band}}</span>
+        <span class="li-genre">{{album.payload.doc.data().genre.join(', ')}}</span>
+        <span class="li-label">{{album.payload.doc.data().label.join(', ')}}</span>
+        <span class="li-producer">{{album.payload.doc.data().producer.join(', ')}}</span>
+        <!--        <span class="li-releaseDate">{{album.payload.doc.data().releaseDate.seconds * 1000 | date:"dd.mm.yyyy"}}</span>-->
+        <button class="edit-button" (click)="openUpdateFormAl(album.payload.doc.data(), album.payload.doc.id)"><svg-icon src="../../assets/create-24px.svg" [svgStyle]="{ 'fill':'blue' }"></svg-icon></button>
+        <button class="delete-button" (click)="activateAreYouSure(album.payload.doc.id)"><svg-icon src="../../assets/delete-24px.svg" [svgStyle]="{ 'fill':'red' }"></svg-icon></button>
+      </li>
+    </ul>
+  </div>
+  <div class="areYouSureAboutThat" [class.areYouSure-active]="areYouSureActive">
+    <div class="ays-body">
+      <img src="../../assets/are-you-sure-about-that.jpg" width="300px" alt="">
+      <div class="areYouSure-buttons">
+        <button (click)="areYouSureActive=true">Cancel</button>
+        <button (click)="areYouSureActive=true; deleteAl()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

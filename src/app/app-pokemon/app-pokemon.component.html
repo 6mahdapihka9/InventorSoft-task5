@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="header-adder">
+    <h2>Pokemons</h2>
+  </div>
+  <div>
+    <ul>
+      <li class="li-header">
+        <span class="li-name">Name</span>
+        <span class="li-url">Url</span>
+      </li>
+      <li *ngFor="let p of pokemons">
+        <span class="li-name">{{p?.name}}</span>
+        <span class="li-url">{{p?.url}}</span>
+        <button (click)="showPokemon(p?.url)">Show</button>
+      </li>
+    </ul>
+  </div>
+  <div class="imageBackGround" [class.pokemonImage-active]="isHiddenImage">
+    <div class="pokemonImage">
+      <img id="imgElement" src="{{pokemonImg}}" alt="">
+      <button (click)="isHiddenImage = true">Close</button>
+    </div>
+  </div>
+</div>
